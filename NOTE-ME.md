@@ -538,5 +538,9 @@ The read time/minutes created by estimating 200 words per minute. divide the cou
 
 26. Home Page - Design
 27. Home Page - Popular Posts
-28. Home Page - Recommended Articles
 Just update PostController method index()/home(), Post Model shortBody() add parameter, Category Model add publishedPosts() method, and add + update code in home.blade.
+
+28. Home Page - Recommended Articles
+Have to re-run php artisan make:component PostItem, so that i can get the class file in app/View/Components.
+Before this just run php artisan make:component PostItem --view.
+#### I should see 3 recommended post with laravel tag because i have upvoted one post with laravel tag but the upvote one will not included here.
