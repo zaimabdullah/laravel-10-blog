@@ -1,4 +1,4 @@
-<x-app-layout :meta-title="'Zcreative Blog - ' . $category->title" :meta-description="'Posts filtered by category ' . $category->title">
+<x-app-layout :meta-title="'Zaim Blog - ' . $category->title" :meta-description="'Posts filtered by category ' . $category->title">
   <div class="container mx-auto flex flex-wrap py-6">
 
     <!-- Posts Section -->

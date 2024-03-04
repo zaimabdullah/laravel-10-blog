@@ -21,7 +21,7 @@ class PostResource extends Resource
 
   protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
-  protected static ?string $navigationGroup = 'Content';
+  protected static ?string $navigationGroup = 'CONTENT';
 
   public static function form(Form $form): Form
   {
@@ -61,8 +61,7 @@ class PostResource extends Resource
             Forms\Components\FileUpload::make('thumbnail'),
             Forms\Components\Select::make('category_id')
               ->multiple()
-              ->relationship('categories', 'title')
-              ->required(),
+              ->relationship('categories', 'title'),
           ])->columnSpan(4)
       ])->columns(12);
   }
@@ -73,15 +72,14 @@ class PostResource extends Resource
       ->columns([
         Tables\Columns\ImageColumn::make('thumbnail'),
         Tables\Columns\TextColumn::make('title')
-          ->searchable(),
+          ->searchable(['title', 'body'])
+          ->sortable(),
         Tables\Columns\IconColumn::make('active')
-          ->boolean(),
+          ->boolean()
+          ->sortable(),
         Tables\Columns\TextColumn::make('published_at')
           ->dateTime()
           ->sortable(),
-        // Tables\Columns\TextColumn::make('user.name')
-        //   ->numeric()
-        //   ->sortable(),
         Tables\Columns\TextColumn::make('updated_at')
           ->dateTime()
           ->sortable(),
@@ -90,6 +88,7 @@ class PostResource extends Resource
         //
       ])
       ->actions([
+        Tables\Actions\ViewAction::make(),
         Tables\Actions\EditAction::make(),
         Tables\Actions\DeleteAction::make(),
       ])
@@ -112,6 +111,7 @@ class PostResource extends Resource
     return [
       'index' => Pages\ListPosts::route('/'),
       'create' => Pages\CreatePost::route('/create'),
+      'view' => Pages\ViewPost::route('/{record}'),
       'edit' => Pages\EditPost::route('/{record}/edit'),
     ];
   }
