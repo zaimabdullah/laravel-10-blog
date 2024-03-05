@@ -69,25 +69,39 @@ New Bash tab run npm run dev = for Laravel Breeze
 'name' => 'hariri',
 'password' => bcrypt('password')
 
-#### Route Exist & not properly link with any button/nav yet
-
+### Route Exist & not properly link with any button/nav yet
 Login with admin user, go-to http://localhost/admin/login
 http://localhost/dashboard
 http://localhost/admin
 
-#### Functionality Exist
-
+### Functionality Exist
 Admin =
 admin-panel = create categories, posts, text-widgets, manage contents, ...
 Normal = register, login, still not defined other func
 
-#### The use of /\*_ @var \App\Models\User $user _/
-
-### is important because when we want to search the usage of any model-class by Find-References(VsCode right-click), it can detect it.
-
-### use it when auto suggestion donot appear whenever you want to use the method from that class.
+### The use of /\*_ @var \App\Models\User $user _/
+#### is important because when we want to search the usage of any model-class by Find-References(VsCode right-click), it can detect it.
+#### use it when auto suggestion do not appear whenever you want to use the method from that class.
 
 ### User created from filament admin will be an admin-user.
+
+### NOTES
+#### Read the comment in upvoteDownvote() method.
+
+### THERE IS SOMETHING DIFFERENT IN post_view MIGRATION FILE then in video, i use the github style code.
+
+### ERROR
+1. THE VIEWS, UPVOTES, DOWNVOTES STILL ERROR. DOES NOT LOOK LIKE THE YOUTUBE + SHOULD HAVE RUN THE COMMAND LINE WITH "--resource=PostResource" BECAUSE NOW DASHBOARD GOT ERROR.
+#### When Zura created the custom widgets, he gave the command "php artisan make:filament-widget PostOverview" without specifying the resource with "--resource=PostResource". That is the reason these widgets are shown in dashboard as well. If you want the widgets to be shown only in view post page you should give "php artisan make:filament-widget PostOverview --resource=PostResource" command.
+
+2. Update the top@topic nav to properly render in mobile screen. But Username + profile + logout not yet.
+
+3. Still Problem About Us content out-of-boundary. ---solve after install breeze
+
+4. But if current user view one single post/article then refresh their browser, the data also got save many time.
+
+### CHALLENGE
+#### As youtube suggestion, generate random token & save this in user\'s cookie and give this random token associated a lifetime like one hour and you will assume that all views the specific user will make on this post/article in one hour will be considered as one view.
 
 <!-- Project Related -->
 
@@ -488,10 +502,6 @@ Add encryption for password (but video create it in mutate.. method in CreateUse
 
 #### whenever user open a post/article, we save that view and also userId(maybe ip address and user agent so that we have information from which location user checking our posts and from which browsers).
 
-#### gonna create migration and save post views
-
-#### in admin panel we display for each post/article how many view it gets So later we can do sort based on that.
-
 Run php artisan make:model PostView -m.
 Add column field in create_post_views_table.php.
 
@@ -503,7 +513,7 @@ $table->foreignId('user_id')->nullable()->references('id')->on('users')->cascade
 Add $fillable field in PostView Model.
 Run php artisan migrate
 
-#### THERE IS SOMETHING DIFFERENT IN MIGRATION FILE then in video, i use the github style code.
+#### THERE IS SOMETHING DIFFERENT IN post_view MIGRATION FILE then in video, i use the github style code.
 
 Add code related to PostView in PostController show() method, add Request parameter + add
 
@@ -573,10 +583,7 @@ $query
 }) 
 -->
 
-## THE VIEWS, UPVOTES, DOWNVOTES STILL ERROR. DOES NOT LOOK LIKE THE YOUTUBE + SHOULD HAVE RUN THE COMMAND LINE WITH "--resource=PostResource" BECAUSE NOW DASHBOARD GOT ERROR.
-
-#### When Zura created the custom widgets, he gave the command "php artisan make:filament-widget PostOverview" without specifying the resource with "--resource=PostResource". That is the reason these widgets are shown in dashboard as well. If you want the widgets to be shown only in view post page you should give "php artisan make:filament-widget PostOverview --resource=PostResource" command.
-
 ## DONE PART 2
 
 29. Reading and Writing Comments
+Run php artisan make:model Comment -m

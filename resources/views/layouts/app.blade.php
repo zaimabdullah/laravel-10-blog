@@ -49,12 +49,14 @@
         class="w-full container mx-auto flex flex-col sm:flex-row items-center text-sm font-bold uppercase mt-0 px-6 py-2">
         <div :class="!open ? '' :
             'w-full flex flex-col sm:flex-row items-center'">
-          <a href="{{ route('home') }}" class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">Home</a>
+          <a href="{{ route('home') }}"
+            class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2 {{ request()->route()->getName() === 'home' ? 'bg-blue-600 text-white' : '' }}">Home</a>
           @foreach ($categories as $category)
             <a href="{{ route('by-category', $category) }}"
-              class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">{{ $category->title }}</a>
+              class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2 {{ request('category')?->slug === $category->slug ? 'bg-blue-600 text-white' : '' }}">{{ $category->title }}</a>
           @endforeach
-          <a href="{{ route('about-us') }}" class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2">About
+          <a href="{{ route('about-us') }}"
+            class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2 {{ request()->route()->getName() === 'about-us' ? 'bg-blue-600 text-white' : '' }}">About
             us</a>
         </div>
 
