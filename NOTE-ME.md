@@ -358,6 +358,9 @@ app(baselayout)
 
 ###### Still Problem About Us content out-of-boundary. ---solve after install breeze
 
+## DONE PART 1
+
+
 19. Signup & Login (use Laravel Breeze)
     Using Laravel Doc as ref, run composer require laravel/breeze --dev.
     Run php artisan breeze:install.
@@ -482,20 +485,28 @@ Add encryption for password (but video create it in mutate.. method in CreateUse
     #### Read the comment in upvoteDownvote() method.
 
 22. Count Post Views
+
 #### whenever user open a post/article, we save that view and also userId(maybe ip address and user agent so that we have information from which location user checking our posts and from which browsers).
+
 #### gonna create migration and save post views
+
 #### in admin panel we display for each post/article how many view it gets So later we can do sort based on that.
 
 Run php artisan make:model PostView -m.
 Add column field in create_post_views_table.php.
-<!-- 
+
+<!--
 For this column, we make nullable() because maybe unAuthorize user can view our post/article too
 $table->foreignId('user_id')->nullable()->references('id')->on('users')->cascadeOnDelete();
  -->
+
 Add $fillable field in PostView Model.
-Run php artisan migrate 
+Run php artisan migrate
+
 #### THERE IS SOMETHING DIFFERENT IN MIGRATION FILE then in video, i use the github style code.
-Add code related to PostView in PostController show() method, add Request parameter + add 
+
+Add code related to PostView in PostController show() method, add Request parameter + add
+
 <!-- 
 $user = $request->user();
 PostView::create([
@@ -505,12 +516,15 @@ PostView::create([
   'user_id' => $user?->id
 ]);
  -->.
+
 #### But if current user view one single post/article then refresh their browser, the data also got save many time.
 
 ## CHALLENGE
+
 #### As youtube suggestion, generate random token & save this in user\'s cookie and give this random token associated a lifetime like one hour and you will assume that all views the specific user will make on this post/article in one hour will be considered as one view.
 
 23. Custom Widgets in Admin
+
 ### Diff from youtube filament v3 is here(admin panel change to panel builder), https://filamentphp.com/docs/3.x/panels/resources/widgets.
 
 ### HERE I Have To Recreate PostResource/ViewPost.php.
@@ -520,27 +534,49 @@ This create PostOverview.php + post-overview.blade.
 Recreate the ViewPost.php file in PostResource folder.
 Copy+paste getHeaderWidgets() from vendor/filament/filament/src/Pages/Page.php, add into PostResource/ViewPost.php.
 Update the return array in getHeaderWidgets() to PostOverview::class.
+
 #### Now we can see the text from post-overview.blade being display in container in ViewPost page.
+
 Adjust the size of container by adding $columnSpan in PostOverview.php.
 Add function getViewData() into PostOverview.php (from vendor/filament/widgets/src/Widget.php or ctrl+click on extends Widget in PostOverview.php).
 Add return data in that method.
 
-## THE VIEWS, UPVOTES, DOWNVOTES STILL ERROR. DOES NOT LOOK LIKE THE YOUTUBE + SHOULD HAVE RUN THE COMMAND LINE WITH "--resource=PostResource" BECAUSE NOW DASHBOARD GOT ERROR. 
+## THE VIEWS, UPVOTES, DOWNVOTES STILL ERROR. DOES NOT LOOK LIKE THE YOUTUBE + SHOULD HAVE RUN THE COMMAND LINE WITH "--resource=PostResource" BECAUSE NOW DASHBOARD GOT ERROR.
+
 #### When Zura created the custom widgets, he gave the command "php artisan make:filament-widget PostOverview" without specifying the resource with "--resource=PostResource". That is the reason these widgets are shown in dashboard as well. If you want the widgets to be shown only in view post page you should give "php artisan make:filament-widget PostOverview --resource=PostResource" command.
 
 24. Search in Posts and Categories
-Add ->searchable() in table in PostResource & CategoryResource, make ([..., ...]) if want to serachable more than one field exm: PostResource title field.
-Add ->sortable() too.
+    Add ->searchable() in table in PostResource & CategoryResource, make ([..., ...]) if want to serachable more than one field exm: PostResource title field.
+    Add ->sortable() too.
 
 25. Add Estimated Read Time
-In Post model, create the humanReadTime() method and use it in post/view.blade & post-item.blade..
-The read time/minutes created by estimating 200 words per minute. divide the count of words by 200 we got the minutes.
+    In Post model, create the humanReadTime() method and use it in post/view.blade & post-item.blade..
+    The read time/minutes created by estimating 200 words per minute. divide the count of words by 200 we got the minutes.
 
 26. Home Page - Design
 27. Home Page - Popular Posts
-Just update PostController method index()/home(), Post Model shortBody() add parameter, Category Model add publishedPosts() method, and add + update code in home.blade.
+    Just update PostController method index()/home(), Post Model shortBody() add parameter, Category Model add publishedPosts() method, and add + update code in home.blade.
 
 28. Home Page - Recommended Articles
-Have to re-run php artisan make:component PostItem, so that i can get the class file in app/View/Components.
-Before this just run php artisan make:component PostItem --view.
+    Have to re-run php artisan make:component PostItem, so that i can get the class file in app/View/Components.
+    Before this just run php artisan make:component PostItem --view.
+
 #### I should see 3 recommended post with laravel tag because i have upvoted one post with laravel tag but the upvote one will not included here.
+
+#### Check if there is any active post for this particular category
+<!-- 
+Category::query()
+->whereHas('posts', function ($query) {
+$query
+->where('active', '=', 1)
+->whereDate('published_at', '<', Carbon::now());
+}) 
+-->
+
+## THE VIEWS, UPVOTES, DOWNVOTES STILL ERROR. DOES NOT LOOK LIKE THE YOUTUBE + SHOULD HAVE RUN THE COMMAND LINE WITH "--resource=PostResource" BECAUSE NOW DASHBOARD GOT ERROR.
+
+#### When Zura created the custom widgets, he gave the command "php artisan make:filament-widget PostOverview" without specifying the resource with "--resource=PostResource". That is the reason these widgets are shown in dashboard as well. If you want the widgets to be shown only in view post page you should give "php artisan make:filament-widget PostOverview --resource=PostResource" command.
+
+## DONE PART 2
+
+29. Reading and Writing Comments
