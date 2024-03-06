@@ -86,22 +86,40 @@ Normal = register, login, still not defined other func
 ### User created from filament admin will be an admin-user.
 
 ### NOTES
+
 #### Read the comment in upvoteDownvote() method.
 
 ### THERE IS SOMETHING DIFFERENT IN post_view MIGRATION FILE then in video, i use the github style code.
+
+#### column field in create_comments_table BUT I DONT USE THE YOUTUBE VIDEO ONE, I FOUND COMMENT UNDER YOUTUBE VIDEO PART 3, I USE COLUMN FIELD FROM THE COMMENT SECTION, THERE IS ONE EXTRA COLUMN ADDED THERE.
+
+#### to DEBUG DATA PASS in *.BLADE, USE <PRE></PRE>, example in resources/views/livewire/comments.blade.php.
+
+#### the wire:key in resources/views/livewire/comments.blade.php, i slightly change it to use just like how livewire documentation prefer BUT IF IN FUTURE THERE PROB, CHANGE TO YOUTUBE THAT I COMMENT IN THAT FILE.
+
+#### because of livewire v3, my reset textarea field in comment-create.blade + CommentCreate.php not working unless i comment-out code in resources/js/app.js file.
+
+#### change sidebar aside tag style class so it hidden in small screen.
+
+#### <!-- <livewire:comment-item :comment="$comment" wire:key="{{ $comment->id }}-{{ $comment->comments->count() }}" /> --> the key has to be like that to make sure comments can be display more than one + can be auto display after new comment create/delete/edit/reply-add, edit, delete.
 
 ### ERROR
 1. THE VIEWS, UPVOTES, DOWNVOTES STILL ERROR. DOES NOT LOOK LIKE THE YOUTUBE + SHOULD HAVE RUN THE COMMAND LINE WITH "--resource=PostResource" BECAUSE NOW DASHBOARD GOT ERROR.
 #### When Zura created the custom widgets, he gave the command "php artisan make:filament-widget PostOverview" without specifying the resource with "--resource=PostResource". That is the reason these widgets are shown in dashboard as well. If you want the widgets to be shown only in view post page you should give "php artisan make:filament-widget PostOverview --resource=PostResource" command.
 
-2. Update the top@topic nav to properly render in mobile screen. But Username + profile + logout not yet.
+2. Update the top@topic nav to properly render in mobile screen. But Username + profile + logout not yet. ---i think solve, good enough
 
 3. Still Problem About Us content out-of-boundary. ---solve after install breeze
 
 4. But if current user view one single post/article then refresh their browser, the data also got save many time.
 
+5. Comment do not clear after submitting. ---solve after commenting alpinejs related code in js/app.js
+
+6. The comment can go more than second level (comment-reply-reply...) but the second reply delete will be problem, not autorefresh/auto not display after delete.
+
 ### CHALLENGE
-#### As youtube suggestion, generate random token & save this in user\'s cookie and give this random token associated a lifetime like one hour and you will assume that all views the specific user will make on this post/article in one hour will be considered as one view.
+1. As youtube suggestion, generate random token & save this in user\'s cookie and give this random token associated a lifetime like one hour and you will assume that all views the specific user will make on this post/article in one hour will be considered as one view.
+2. Implement soft delete on post, categories and most important comment exm: someone delete a comment and someone blaming someone else you can check in the DB that the actual comment was presented there.
 
 <!-- Project Related -->
 
@@ -586,4 +604,55 @@ $query
 ## DONE PART 2
 
 29. Reading and Writing Comments
-Run php artisan make:model Comment -m
+Run php artisan make:model Comment -m, create Comment model + migration.
+
+Add column field in create_comments_table 
+#### BUT I DONT USE THE YOUTUBE VIDEO ONE, I FOUND COMMENT UNDER YOUTUBE VIDEO PART 3, I USE COLUMN FIELD FROM THE COMMENT SECTION, THERE IS ONE EXTRA COLUMN ADDED THERE.
+Add $fillable in Comment Model.
+Run php artisan migrate.
+
+Run php artisan make:livewire Comments, create livewire component app/Livewire/Comments.php & resources/views/livewire/comments.blade.php.
+Run php artisan make:livewire CommentItem, create livewire component app/Livewire/CommentItem.php & resources/views/livewire/comment-item.blade.php.
+Run php artisan make:livewire CommentCreate, create livewire component app/Livewire/CommentCreate.php & resources/views/livewire/comment-create.blade.php.
+
+Run npm install @tailwindcss/forms.
+Visit tailwindui.com/components find the contact form UI and copy the style of form input and button.
+Paste in comment-create.blade.
+
+Add code in app/Livewire/Comments.php, CommentCreate.php, CommentItem.php, also in resources/views/livewire/comments.blade, comment-create.blade, and comment-item.blade.
+
+
+#### For the function of add new comment + immediately render the comment without need to refresh browser, Because i use Livewire V3, youtube style code which use emitUp/emit - $listeners cannot be used anymore. So, i use dispatch() - #[On(...)].
+#### for this function, other than above, other is same with video. related file for it are comment-create.blade -> CommenCreate -> Comments -> comments.blade.
+
+30. Deleting Comments
+
+31. Editing Comments
+Here youtube video run php artisan make:migration add_parent_id_on_comments_table.
+#### But because i already did when first create the comment table, i do not do this anymore here.
+
+32. Replying comments
+#### This project only allow two level of comments. parent - child. do not have any grandchildren level.
+
+#### Everything just the same with video except how to emit which used dispatch, and listening to the emit which use #on.
+
+1. For create comment -> comment-create call createComment() component on submit button click event and do the creation + dispatch even 'commentCreated' from createComment() method in CommentCreate component. Comments component listen to that even #[On('commentCreated')].
+
+2. For delete comment -> comment-item call deleteComment() method on delete button click event and do the deletion + dispatch even 'commentDeleted' from deleteComment() method in CommentItem component. Comments component listen to that even #[On('commentDeleted')].
+
+3. For cancel edit comment -> comment-item call startCommentEdit() method on edit button click event, startCommentEdit() method from CommentItem component open the edit input field which a create-comment field actually, But if click on cancel button, cancel button will dispatch == $dispatch('cancelEditing') from create-comment. CommentItem component listen to that even #[On('cancelEditing')].
+
+4. For edit+update comment -> comment-item call startCommentEdit() method on edit button click event, startCommentEdit() method from CommentItem component open the edit input field which a create-comment field actually, submit the input will go to createComment() method from Comments component just like No.1 but under edit an existing comment + dispatch even 'commentUpdated' from createComment(). CommentItem component listen to that even #[On('commentUpdated')].
+
+5. For reply comment -> comment-item call startReply() method on reply button click event, startReply() method from CommentItem component open a new create input field which create-comment field, submit the input will go to createComment() method from Comments component just like No-1 except will bring along $parent->id. After creation, createComment() method from Comments component will dispatch event 'commentCreated'. CommentItem component listen to that even #[On('commentCreated')].
+#### BUT I'M NOT SURE IF Comments component also listen to this even #[On('commentCreated')] eventhough Based On No-1. But This one create-comment coming from comment-item (reply on parent comment).
+
+32. Finish comments
+
+33. Global Search for posts
+Add input field for search in app.blade.
+Add new route for search in web.php.
+Create new search() method in PostController.
+
+
+

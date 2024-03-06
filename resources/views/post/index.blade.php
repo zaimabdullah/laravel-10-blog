@@ -1,5 +1,5 @@
 <x-app-layout :meta-title="'Zaim Blog - ' . $category->title" :meta-description="'Posts filtered by category ' . $category->title">
-  <div class="container mx-auto flex flex-wrap py-6">
+  <div class="container mx-auto max-w-7xl flex flex-wrap py-6">
 
     <!-- Posts Section -->
     <section class="w-full md:w-2/3  px-3">

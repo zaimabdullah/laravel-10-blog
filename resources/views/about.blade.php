@@ -1,6 +1,6 @@
 <x-app-layout meta-title="Zcreative Blog - About us" meta-description="About Us">
 
-  <div class="container mx-auto flex flex-wrap py-6">
+  <div class="container max-w-6xl mx-auto py-6">
 
     <!-- Post Section -->
     <section class="w-full md:w-full flex flex-col items-center px-3">
