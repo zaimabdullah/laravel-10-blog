@@ -47,7 +47,7 @@
     <div :class="open ? 'block' : 'hidden'" class="w-full flex-grow sm:flex sm:items-center sm:w-auto">
       <div :class="open ? 'justify-center' : 'justify-between '"
         class="w-full container mx-auto flex flex-col sm:flex-row items-center text-sm font-bold uppercase mt-0 px-6 py-2">
-        <div :class="!open ? 'md:ml-5 sm:ml-0' :
+        <div :class="!open ? 'md:ml-3' :
             'w-full flex flex-col sm:flex-row items-center'">
           <a href="{{ route('home') }}"
             class="hover:bg-blue-600 hover:text-white rounded py-2 px-4 mx-2 {{ request()->route()->getName() === 'home' ? 'bg-blue-600 text-white' : '' }}">Home</a>
@@ -60,9 +60,9 @@
             us</a>
         </div>
 
-        <div :class="!open ? 'flex items-center md:mr-5 sm:mr-0' : ''">
+        <div :class="!open ? 'flex items-center md:mr-3' : ''">
           {{-- search form --}}
-          <div :class="open ? 'hidden' : 'relative container'" x-data="{ showSearch: false }">
+          <div :class="open ? 'hidden' : 'relative'" x-data="{ showSearch: false }">
             <form method="get" action="{{ route('search') }}" x-show="showSearch" @click.away="showSearch = false">
               <input name="q" value="{{ request()->get('q') }}"
                 class="absolute right-6 -mt-3 block w-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium"

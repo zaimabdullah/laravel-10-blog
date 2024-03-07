@@ -3,7 +3,7 @@
 ?>
 <x-app-layout meta-title="Zaim Blog" meta-description="Zaim's personal blog about coding tutorials">
 
-  <div class="container max-w-7xl mx-auto py-6">
+  <div class="container mx-auto max-w-7xl py-6">
 
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
       <!-- Latest Post -->
