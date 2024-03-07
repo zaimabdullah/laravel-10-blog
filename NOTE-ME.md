@@ -104,8 +104,7 @@ Normal = register, login, still not defined other func
 #### <!-- <livewire:comment-item :comment="$comment" wire:key="{{ $comment->id }}-{{ $comment->comments->count() }}" /> --> the key has to be like that to make sure comments can be display more than one + can be auto display after new comment create/delete/edit/reply-add, edit, delete.
 
 ### ERROR
-1. THE VIEWS, UPVOTES, DOWNVOTES STILL ERROR. DOES NOT LOOK LIKE THE YOUTUBE + SHOULD HAVE RUN THE COMMAND LINE WITH "--resource=PostResource" BECAUSE NOW DASHBOARD GOT ERROR.
-#### When Zura created the custom widgets, he gave the command "php artisan make:filament-widget PostOverview" without specifying the resource with "--resource=PostResource". That is the reason these widgets are shown in dashboard as well. If you want the widgets to be shown only in view post page you should give "php artisan make:filament-widget PostOverview --resource=PostResource" command.
+1. THE VIEWS, UPVOTES, DOWNVOTES STILL ERROR. DOES NOT LOOK LIKE THE YOUTUBE + SHOULD HAVE RUN THE COMMAND LINE WITH "--resource=PostResource" BECAUSE NOW DASHBOARD GOT ERROR. When Zura created the custom widgets, he gave the command "php artisan make:filament-widget PostOverview" without specifying the resource with "--resource=PostResource". That is the reason these widgets are shown in dashboard as well. If you want the widgets to be shown only in view post page you should give "php artisan make:filament-widget PostOverview --resource=PostResource" command. ---solve by do the step in number 23. custom widget again, have been note at the bottom-most of this file.
 
 2. Update the top@topic nav to properly render in mobile screen. But Username + profile + logout not yet. ---i think solve, good enough
 
@@ -654,9 +653,13 @@ Add input field for search in app.blade.
 Add new route for search in web.php.
 Create new search() method in PostController.
 
+## Settle the Admin + ViewPost Custom Widget
+Update for 23. Custom Widget
+Re-run 
+### php artisan make:filament-widget PostOverview --resource=PostResource.
+This create PostOverview.php in app/Filament/PostResource/Widgets + resources/views/filament/resources/post-resource/post-overview.blade.
+Then just copy+paste code from PostOverview + post-overview.blade before this.
+
 DONE
-
-
-Next settle the error on admin dashboard
 
 
