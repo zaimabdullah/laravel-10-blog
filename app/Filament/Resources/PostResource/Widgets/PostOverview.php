@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Filament\Widgets;
+namespace App\Filament\Resources\PostResource\Widgets;
 
 use App\Models\PostView;
 use App\Models\UpvoteDownvote;
@@ -21,6 +21,5 @@ class PostOverview extends Widget
       'downvotes' => UpvoteDownvote::where('post_id', '=', $this->record->id)->where('is_upvote', '=', 0)->count(),
     ];
   }
-
-  protected static string $view = 'filament.widgets.post-overview';
+  protected static string $view = 'filament.resources.post-resource.widgets.post-overview';
 }

@@ -62,7 +62,7 @@
 
         <div :class="!open ? 'flex items-center md:mr-3' : ''">
           {{-- search form --}}
-          <div :class="open ? 'hidden' : 'relative'" x-data="{ showSearch: false }">
+          <div :class="open ? 'hidden' : 'relative container'" x-data="{ showSearch: false }">
             <form method="get" action="{{ route('search') }}" x-show="showSearch" @click.away="showSearch = false">
               <input name="q" value="{{ request()->get('q') }}"
                 class="absolute right-6 -mt-3 block w-auto rounded-md border-0 px-3.5 py-2 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6 font-medium"

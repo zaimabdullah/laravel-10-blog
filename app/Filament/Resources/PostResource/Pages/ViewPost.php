@@ -3,8 +3,8 @@
 namespace App\Filament\Resources\PostResource\Pages;
 
 use App\Filament\Resources\PostResource;
-use App\Filament\Widgets\PostOverview;
-// use App\Filament\Resources\PostResource\Widgets\PostOverview;
+// use App\Filament\Widgets\PostOverview;
+use App\Filament\Resources\PostResource\Widgets\PostOverview;
 use Filament\Actions;
 use Filament\Resources\Pages\ViewRecord;
 

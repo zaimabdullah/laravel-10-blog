@@ -1,11 +1,11 @@
 {{-- <x-filament-widgets::widget>
-  <x-filament::section>
-    Hello From Widget
-  </x-filament::section>
-</x-filament-widgets::widget> --}}
+    <x-filament::section> --}}
+{{-- Widget content --}}
+{{-- </x-filament::section>
+</x-filament-widgets::widget>  --}}
 
-<x-filament-widgets::widget class="grid grid-cols-3 gap-3">
-  <x-filament::card>
+<x-filament-widgets::widget class="flex flex-row justify-between">
+  <x-filament::section style="width: 17.5rem;">
     <h2 class="text-lg sm:text-xl font-bold tracking-light">
       Views
     </h2>
@@ -18,12 +18,12 @@
       </svg>
       {{ $viewCount }}
     </div>
-  </x-filament::card>
-  <x-filament::card>
+  </x-filament::section>
+  <x-filament::section style="width: 17.5rem;">
     <h2 class="text-lg sm:text-xl font-bold tracking-light">
       Upvotes
     </h2>
-    <div class="flex gap-2  mt-2">
+    <div class="flex gap-2 mt-2">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
         stroke="currentColor" class="w-6 h-6">
         <path stroke-linecap="round" stroke-linejoin="round"
@@ -31,8 +31,8 @@
       </svg>
       {{ $upvotes }}
     </div>
-  </x-filament::card>
-  <x-filament::card>
+  </x-filament::section>
+  <x-filament::section style="width: 17.5rem;">
     <h2 class="text-lg sm:text-xl font-bold tracking-light">
       Downvotes
     </h2>
@@ -44,5 +44,5 @@
       </svg>
       {{ $downvotes }}
     </div>
-  </x-filament::card>
+  </x-filament::section>
 </x-filament-widgets::widget>

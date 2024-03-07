@@ -106,6 +106,13 @@ class PostResource extends Resource
     ];
   }
 
+  public static function getWidgets(): array
+  {
+    return [
+      PostResource\Widgets\PostOverview::class,
+    ];
+  }
+
   public static function getPages(): array
   {
     return [
