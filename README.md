@@ -1,66 +1,73 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Laravel Blog
+Welcome to Laravel blog! This is Laravel 10 blog project with [Filament PHP](https://filamentphp.com/) admin panel.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Weblink: [Live Website](#)
 
-## About Laravel
+## Table of Contents
+- [Introduction](#introduction)
+- [Web Pages](#web-pages)
+- [Features](#features)
+- [Technologies Used](#technologies-used)
+- [Contact](#contact)
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Introduction
+This project is a Laravel-based blog website with various features for both admins and users. It incorporates functionalities such as user authentication, email validation, post creation, category management, comment system, likes/dislikes, search, and more.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Web Pages
+|  Home                             |                            |
+|-----------------------------------------|-----------------------------------------|
+| ![home-page](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/dfc4321e-9a99-4bcb-8112-71edbe703f22) | ![home-page-2](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/4bf3ed75-c615-482f-8436-f525d73c8035) |
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+|  View Post                              |                              |
+|-----------------------------------------|-----------------------------------------|
+| ![view-page](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/f3e572c4-0f06-4708-866c-4e95ff948ad9) | ![view-page-2](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/e1283b9b-1c72-4e3f-9c35-00a0c096b84b) |
 
-## Learning Laravel
+|  Profile                                                           |
+|----------------------------------------------------------------------------------|
+| ![profile-page](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/8d4193a5-5ae5-44c9-90d3-7127a1b5c213)  |
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+|  Admin Dashboard                                                           |
+|----------------------------------------------------------------------------------|
+| ![admin-dashboard](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/42797c56-8474-4772-8b31-2e86da0d67a7) |
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+|  Admin Dashboard - Categories                              |                              |
+|-----------------------------------------|-----------------------------------------|
+| ![admin-dashboard-categories](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/597b0be4-abe1-4460-b28d-edfb3e6d3194) | ![admin-dashboard-categories-2](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/9e608d9b-59fc-4f0b-9b00-864960a749f3) |
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+|  Admin Dashboard - Posts                              |                              |
+|-----------------------------------------|-----------------------------------------|
+| ![admin-dashboard-posts](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/24570e07-66d4-4edb-ad9c-847cc5fd8e1e) | ![admin-dashboard-posts-2](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/07e63fb2-f23a-4497-8790-927cfeb20169) |
+| ![admin-dashboard-posts-3](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/9e115e28-3c7b-4b4e-95c1-14e98815cf7c) |
 
-## Laravel Sponsors
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+|  Admin Dashboard - Text Widgets                              |                              |
+|-----------------------------------------|-----------------------------------------|
+| ![admin-dashboard-textwidgets](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/ac93360c-455b-4f2f-915f-afdfc9b59e0e) | ![admin-dashboard-textwidgets-2](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/2aacbc28-5821-4416-b2aa-35bafe6586a2) |
 
-### Premium Partners
+|  Admin Dashboard - Users                              |                              |
+|-----------------------------------------|-----------------------------------------|
+| ![admin-dashboard-users](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/179bd6e4-0688-4afe-a6b3-92612fbf01a7) | ![admin-dashboard-users-2](https://github.com/zaimabdullah/laravel-10-blog/assets/36534973/120acd58-8861-4af3-9d71-2b7b3b3cc53b) |
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## Features
+- User Authentication: Users can register, login, and manage their accounts.
+- Admin Panel: Admins have access to an admin panel where they can create categories, posts, manage content, and perform administrative tasks.
+- Post Management: Admins can create, edit, delete, and view posts. Posts can be categorized and have associated likes, dislikes, and comments.
+- Comment System: Users can leave comments on posts, reply to comments, edit and delete their own comments.
+- Likes/Dislikes: Users can upvote or downvote posts.
+- Search: Global search functionality allows users to search for posts based on keywords.
+- Estimated Read Time: The system estimates the read time for each post.
+- Email Verification: Users are required to verify their email addresses upon registration, ensuring the security and authenticity of user accounts.
 
-## Contributing
+## Technologies Used
+- Laravel 10: The PHP framework used for backend development.
+- Filament 3: A Laravel-based admin panel package used for admin functionalities.
+- Tailwind CSS: A utility-first CSS framework used for styling.
+- Livewire 3: A full-stack framework for Laravel used for dynamic, reactive interfaces.
+- Spatie Laravel Permission: A package used for role and permission management.
+- MySQL: The database management system used for data storage.
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+## Contact
 
-## Code of Conduct
+For any questions or inquiries, please reach out to the development team at [husnizaim97@gmail.com]
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Enjoy using Laravel Blog and stay productive!
