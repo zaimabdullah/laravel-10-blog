@@ -66,8 +66,5 @@ This project is a Laravel-based blog website with various features for both admi
 - Spatie Laravel Permission: A package used for role and permission management.
 - MySQL: The database management system used for data storage.
 
-## Contact
-
-For any questions or inquiries, please reach out to the development team at [husnizaim97@gmail.com]
-
-Enjoy using Laravel Blog and stay productive!
+## References
+[TheCodeholic](https://github.com/thecodeholic/laravel-10-blog)
