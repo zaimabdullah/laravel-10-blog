@@ -11,7 +11,7 @@ Welcome to Laravel blog! This is Laravel 10 blog project with [Filament PHP](htt
 - [Contact](#contact)
 
 ## Introduction
-This project is a Laravel-based blog website with various features for both admins and users. It incorporates functionalities such as user authentication, email validation, post creation, category management, comment system, likes/dislikes, search, and more.
+This project is a Laravel-based blog web application with various features for both admins and users. It incorporates functionalities such as user authentication, email validation, post creation, category management, comment system, likes/dislikes, search, and more.
 
 ## Web Pages
 |  Home                             |                            |
