@@ -1,8 +1,6 @@
 # Laravel Blog
 Welcome to Laravel blog! This is Laravel 10 blog project with [Filament PHP](https://filamentphp.com/) admin panel.
 
-### Weblink: [Live Website](#)
-
 ## Table of Contents
 - [Introduction](#introduction)
 - [Web Pages](#web-pages)
